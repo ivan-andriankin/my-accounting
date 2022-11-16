@@ -24,7 +24,7 @@ public class AccountBalanceService {
     }
 
     public AccountBalance updateAccountBalance(AccountBalance accountBalance) {
-        accountBalanceRepository.save(accountBalance);
+        accountBalanceRepository.save(accountBalance.setAccountName());
         return accountBalance;
     }
 

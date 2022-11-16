@@ -10,21 +10,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Setter
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="account_balance")
-public class AccountBalance {
+@Table(name="income_item")
+public class IncomeItem {
     @Id
-    @Column(name="account_id")
-    private Long accountId;
+    @Column(name="income_item_id")
+    private Long incomeItemId;
 
-    @Column(name="account_name")
-    private String accountName;
-
-    @Column(name="account_balance")
-    private double accountBalance;
-
+    @Column(name="income_item_name")
+    private String incomeItemName;
 }

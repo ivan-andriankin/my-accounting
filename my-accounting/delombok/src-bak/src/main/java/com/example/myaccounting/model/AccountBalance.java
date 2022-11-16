@@ -10,8 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -26,5 +26,4 @@ public class AccountBalance {
 
     @Column(name="account_balance")
     private double accountBalance;
-
 }

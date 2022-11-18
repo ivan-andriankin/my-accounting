@@ -10,7 +10,7 @@ public class OutcomeTransaction {
     @Column(name = "outcome_transaction_id")
     private Long outcomeTransactionId;
     @ManyToOne
-    @Column(name = "outcome_item_id")
+    @JoinColumn(name = "outcome_item_id")
     private OutcomeItem outcomeItemId;
     @Column(name = "outcome_transaction_mny")
     private double outcomeTransactionMny;

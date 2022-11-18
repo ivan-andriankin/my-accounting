@@ -10,7 +10,7 @@ public class IncomeTransaction {
     @Column(name = "income_transaction_id")
     private Long incomeTransactionId;
     @ManyToOne
-    @Column(name = "income_item_id")
+    @JoinColumn(name = "income_item_id")
     private IncomeItem incomeItemId;
     @Column(name = "income_transaction_mny")
     private double incomeTransactionMny;

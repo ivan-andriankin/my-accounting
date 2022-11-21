@@ -22,7 +22,7 @@ public class OutcomeTransactionController {
         return new ResponseEntity(outcomeTransactionService.getAllOutcomeTransactions(), HttpStatus.OK);
     }
 
-    @GetMapping("/{incomeTransactionId}")
+    @GetMapping("/{outcomeTransactionId}")
     public ResponseEntity<OutcomeTransaction> getOutcomeTransactionById(@PathVariable("outcomeTransactionId") Long outcomeTransactionId) {
         return new ResponseEntity(outcomeTransactionService.getOutcomeTransactionById(outcomeTransactionId), HttpStatus.OK);
     }

@@ -11,7 +11,7 @@ public class OutcomeItem {
     @Id
     @Column(name = "outcome_item_id")
     private Long outcomeItemId;
-    @Column(name = "outcome_item_id")
+    @Column(name = "outcome_item_name")
     private String outcomeItemName;
 
     //<editor-fold defaultstate="collapsed" desc="delombok">

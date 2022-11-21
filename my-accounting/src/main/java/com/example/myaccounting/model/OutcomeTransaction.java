@@ -2,6 +2,7 @@ package com.example.myaccounting.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "outcome_transaction")
@@ -16,7 +17,7 @@ public class OutcomeTransaction {
     private double outcomeTransactionMny;
     @Column(name = "outcome_transaction_date")
     @Temporal(TemporalType.DATE)
-    private LocalDate outcomeTransactionDate;
+    private Date outcomeTransactionDate;
 
     //<editor-fold defaultstate="collapsed" desc="delombok">
     @SuppressWarnings("all")
@@ -35,7 +36,7 @@ public class OutcomeTransaction {
     }
 
     @SuppressWarnings("all")
-    public LocalDate getOutcomeTransactionDate() {
+    public Date getOutcomeTransactionDate() {
         return this.outcomeTransactionDate;
     }
 
@@ -55,7 +56,7 @@ public class OutcomeTransaction {
     }
 
     @SuppressWarnings("all")
-    public void setOutcomeTransactionDate(final LocalDate outcomeTransactionDate) {
+    public void setOutcomeTransactionDate(final Date outcomeTransactionDate) {
         this.outcomeTransactionDate = outcomeTransactionDate;
     }
 
@@ -64,7 +65,7 @@ public class OutcomeTransaction {
     }
 
     @SuppressWarnings("all")
-    public OutcomeTransaction(final Long outcomeTransactionId, final OutcomeItem outcomeItemId, final double outcomeTransactionMny, final LocalDate outcomeTransactionDate) {
+    public OutcomeTransaction(final Long outcomeTransactionId, final OutcomeItem outcomeItemId, final double outcomeTransactionMny, final Date outcomeTransactionDate) {
         this.outcomeTransactionId = outcomeTransactionId;
         this.outcomeItemId = outcomeItemId;
         this.outcomeTransactionMny = outcomeTransactionMny;

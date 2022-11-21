@@ -1,19 +1,13 @@
 package com.example.myaccounting.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="account_balance")
 public class AccountBalance {
@@ -27,4 +21,24 @@ public class AccountBalance {
     @Column(name="account_balance")
     private double accountBalance;
 
+    public AccountBalance(Long accountId, String accountName, double accountBalance) {
+        this.accountId = accountId;
+        this.accountName = accountName;
+        this.accountBalance = accountBalance;
+    }
+
+    public AccountBalance() {
+    }
+
+    public void setAccountId(Long accountId) {
+        this.accountId = accountId;
+    }
+
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
+    }
+
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
+    }
 }

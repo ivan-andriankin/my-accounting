@@ -1,5 +1,7 @@
 package com.example.myaccounting.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
@@ -17,6 +19,7 @@ public class IncomeTransaction {
     private double incomeTransactionMny;
     @Column(name = "income_transaction_date")
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date incomeTransactionDate;
 
     //<editor-fold defaultstate="collapsed" desc="delombok">

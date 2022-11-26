@@ -2,6 +2,7 @@ package com.example.myaccounting.rest;
 
 import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.service.IncomeItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/incomeItem")
 public class IncomeItemController {
-    IncomeItemService incomeItemService;
+    private IncomeItemService incomeItemService;
 
     public IncomeItemController(IncomeItemService incomeItemService) {
         this.incomeItemService = incomeItemService;
@@ -23,7 +24,7 @@ public class IncomeItemController {
     }
 
     @GetMapping("/{incomeItemId}")
-    public ResponseEntity<IncomeItem> getIncomeItemById(@PathVariable("incomeItemId") Long incomeItemId) {
+    public ResponseEntity<List<IncomeItem>> getIncomeItemById(@PathVariable("incomeItemId") Long incomeItemId) {
         return new ResponseEntity(incomeItemService.getIncomeItemById(incomeItemId), HttpStatus.OK);
     }
 
@@ -38,7 +39,7 @@ public class IncomeItemController {
     }
 
     @DeleteMapping
-    public String deleteIncomeItem(IncomeItem incomeItem) {
+    public String deleteIncomeItem(@RequestBody IncomeItem incomeItem) {
         return "Income item has been deleted.";
     }
 }

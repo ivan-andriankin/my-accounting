@@ -2,10 +2,12 @@ package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.IncomeTransaction;
 import com.example.myaccounting.repository.IncomeTransactionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class IncomeTransactionService {
     private IncomeTransactionRepository incomeTransactionRepository;
 

@@ -23,7 +23,7 @@ public class OutcomeTransactionController {
     }
 
     @GetMapping("/{outcomeTransactionId}")
-    public ResponseEntity<OutcomeTransaction> getOutcomeTransactionById(@PathVariable("outcomeTransactionId") Long outcomeTransactionId) {
+    public ResponseEntity<List<OutcomeTransaction>> getOutcomeTransactionById(@PathVariable("outcomeTransactionId") Long outcomeTransactionId) {
         return new ResponseEntity(outcomeTransactionService.getOutcomeTransactionById(outcomeTransactionId), HttpStatus.OK);
     }
 
@@ -38,7 +38,7 @@ public class OutcomeTransactionController {
     }
 
     @DeleteMapping
-    public String deleteOutcomeTransaction(OutcomeTransaction outcomeTransaction) {
+    public String deleteOutcomeTransaction(@RequestBody OutcomeTransaction outcomeTransaction) {
         return "Outcome transaction has been deleted.";
     }
 }

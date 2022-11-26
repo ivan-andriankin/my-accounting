@@ -23,7 +23,7 @@ public class IncomeTransactionController {
     }
 
     @GetMapping("/{incomeTransactionId}")
-    public ResponseEntity<IncomeTransaction> getIncomeTransactionById(@PathVariable("incomeTransactionId") Long incomeTransactionId) {
+    public ResponseEntity<List<IncomeTransaction>> getIncomeTransactionById(@PathVariable("incomeTransactionId") Long incomeTransactionId) {
         return new ResponseEntity(incomeTransactionService.getIncomeTransactionById(incomeTransactionId), HttpStatus.OK);
     }
 
@@ -38,7 +38,7 @@ public class IncomeTransactionController {
     }
 
     @DeleteMapping
-    public String deleteIncomeTransaction(IncomeTransaction incomeTransaction) {
+    public String deleteIncomeTransaction(@RequestBody IncomeTransaction incomeTransaction) {
         return "Income transaction has been deleted.";
     }
 }

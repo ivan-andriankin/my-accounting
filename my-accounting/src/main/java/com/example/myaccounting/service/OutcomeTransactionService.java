@@ -2,10 +2,12 @@ package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.OutcomeTransaction;
 import com.example.myaccounting.repository.OutcomeTransactionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OutcomeTransactionService {
     private OutcomeTransactionRepository outcomeTransactionRepository;
 

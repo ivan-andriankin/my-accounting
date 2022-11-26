@@ -3,10 +3,12 @@ package com.example.myaccounting.service;
 import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.model.OutcomeItem;
 import com.example.myaccounting.repository.OutcomeItemRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OutcomeItemService {
     private OutcomeItemRepository outcomeItemRepository;
 

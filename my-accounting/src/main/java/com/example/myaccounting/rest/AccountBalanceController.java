@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/accountBalance")
 public class AccountBalanceController {
-
     private AccountBalanceService accountBalanceService;
 
     public AccountBalanceController(AccountBalanceService accountBalanceService) {
@@ -42,5 +41,10 @@ public class AccountBalanceController {
     @DeleteMapping
     public String deleteAccountBalance(@RequestBody AccountBalance accountBalance) {
         return "Account has been deleted.";
+    }
+
+    @GetMapping("index")
+    public String helloForm() {
+        return "index";
     }
 }

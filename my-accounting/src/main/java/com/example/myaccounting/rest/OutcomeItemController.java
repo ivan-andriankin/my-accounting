@@ -23,7 +23,7 @@ public class OutcomeItemController {
     }
 
     @GetMapping("/{outcomeItemId}")
-    public ResponseEntity<OutcomeItem> getOutcomeItemById(@PathVariable("outcomeItemId") Long outcomeItemId) {
+    public ResponseEntity<List<OutcomeItem>> getOutcomeItemById(@PathVariable("outcomeItemId") Long outcomeItemId) {
         return new ResponseEntity(outcomeItemService.getOutcomeItemById(outcomeItemId), HttpStatus.OK);
     }
 
@@ -38,7 +38,7 @@ public class OutcomeItemController {
     }
 
     @DeleteMapping
-    public String deleteIncomeItem(OutcomeItem outcomeItem) {
+    public String deleteIncomeItem(@RequestBody OutcomeItem outcomeItem) {
         return "Outcome item has been deleted.";
     }
 }

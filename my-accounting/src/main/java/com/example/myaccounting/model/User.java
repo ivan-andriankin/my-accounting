@@ -2,6 +2,7 @@ package com.example.myaccounting.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import java.util.Date;
@@ -16,6 +17,7 @@ public class User {
     private String note;
     private String profession;
     private boolean married;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
     @Override

@@ -2,16 +2,19 @@ package com.example.myaccounting.rest;
 
 import com.example.myaccounting.model.AccountBalance;
 import com.example.myaccounting.service.AccountBalanceService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/v1/accountBalance")
 public class AccountBalanceController {
+
     private AccountBalanceService accountBalanceService;
 
     public AccountBalanceController(AccountBalanceService accountBalanceService) {
@@ -43,8 +46,31 @@ public class AccountBalanceController {
         return "Account has been deleted.";
     }
 
-    @GetMapping("index")
-    public String helloForm() {
-        return "index";
+
+
+    //  *** Thymeleaf: ***
+    @GetMapping("/showAccounts")
+    public String showAccountsPage(Model model) {
+        model.addAttribute("accounts", accountBalanceService.getAllAccountBalances());
+        return "show_account_balances";
     }
+
+    @GetMapping("/addAccountBalance")
+    public String showAddAccountBalanceForm(Model model) {
+        AccountBalance accountBalance = new AccountBalance();
+        model.addAttribute("accountBalance", accountBalance);
+        //model.addAttribute("accountBalance", accountBalanceService.saveAccountBalance());
+        return "add_account_balance_form";
+    }
+
+    @PostMapping("/addAccountBalance")
+    public String addAccountBalance(@ModelAttribute("accountBalance") AccountBalance accountBalance) {
+        accountBalanceService.saveAccountBalance(accountBalance);
+        return "redirect:/api/v1/accountBalance/showAccounts";
+    }
+
+
+    // *** End of Thymeleaf ***
+
+
 }

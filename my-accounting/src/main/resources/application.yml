@@ -4,8 +4,10 @@ spring:
     username: ${POSTGRES_USERNAME:postgres}
     password: ${POSTGRES_PASSWORD:mysecretpassword}
     sql-script-encoding: UTF-8
+
   application:
     name: ${MYACCOUNTING_HOST:my_accounting}
+
   jpa:
     properties:
       hibernate:
@@ -14,8 +16,28 @@ spring:
           time_zone: GMT+4
     hibernate:
       ddl-auto: update
+
   server:
     port: ${MYACCOUNTING_PORT:8080}
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+  thymeleaf:
+    cache: false
+    check-template: true
+    prefix: classpath:/templates/
+    check-template-location: true
+    content-type: text/html
+    enabled: true
+    encoding: UTF-8
+    # excluded-view-names:
+    # mode: HTML5
+    # prefix: /templates/
+    # suffix: .html
+    # template-resolver-order:
+    # view-names:
 
 ---
 spring:

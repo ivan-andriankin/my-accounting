@@ -3,10 +3,7 @@ package com.example.myaccounting.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -14,7 +11,8 @@ import javax.persistence.Table;
 @Table(name = "outcome_item")
 public class OutcomeItem {
     @Id
-    @Column(name = "outcome_item_id")
+    @GeneratedValue(generator = "outcome_item_id", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "outcome_item_id", initialValue = 1, allocationSize = 1)
     private Long outcomeItemId;
     @Column(name = "outcome_item_name")
     private String outcomeItemName;

@@ -14,7 +14,8 @@ import java.util.Date;
 @Table(name = "outcome_transaction")
 public class OutcomeTransaction {
     @Id
-    @Column(name = "outcome_transaction_id")
+    @GeneratedValue(generator = "outcome_transaction_id", strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "outcome_transaction_id", initialValue = 1, allocationSize = 1)
     private Long outcomeTransactionId;
     @ManyToOne
     @JoinColumn(name = "outcome_item_id")

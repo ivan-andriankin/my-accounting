@@ -12,7 +12,6 @@
         }
         input[type=text], input[type=password], select {
             display: inline-block;
-            margin: 5px;
             width: 200px;
         }
         input[type=checkbox] {
@@ -25,7 +24,7 @@
         <h1>User registration</h1>
 
         <form action="#" th:action="@{/register}" method="post" th:object="${user}">
-            <label>Full name:</label><input type="text" th:field="*{name}"><br>
+            <label>Full name: </label><input type="text" th:field="*{name}"><br>
             <label>Email: </label><input type="text" th:field="*{email}"><br>
             <label>Password: </label><input type="password" th:field="*{password}"><br><br>
             <label>Birthday (yyyy-mm-dd): </label><input type="text" th:field="*{birthday}"><br>

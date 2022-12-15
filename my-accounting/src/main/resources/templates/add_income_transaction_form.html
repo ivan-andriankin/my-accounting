@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add income item form</title>
+</head>
+<body>
+  <div>
+    <h2>Add income item form</h2>
+
+    <form action="#" th:action="@{/api/v1/incomeTransaction/addIncomeTransaction}" method="post" th:object="${incomeTransaction}">
+        <label>Income item: </label><input type="text" th:field="*{incomeItemName}"><br>
+        <label>Income transaction money: </label><input type="text" th:field="*{incomeTransactionMny}"><br>
+
+        <br><br>
+        <button type="submit">Add income item</button>
+        incomeTransactionId
+        incomeItemId
+        incomeTransactionMny
+        incomeTransactionDate
+    </form>
+  </div>
+</body>
+</html>

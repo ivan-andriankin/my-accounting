@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Outcome items</title>
+</head>
+<body>
+  <h3>Outcome items</h3>
+
+  <div>
+    <table border="1" bordercolor="1px" cellspacing="0px" cellpadding="2px">
+      <thead>
+      <tr>
+        <th>Outcome item id</th>
+        <th>Outcome item</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="outcomeItem : ${outcomeItems}">
+        <td th:text="${outcomeItem.outcomeItemId}"></td>
+        <td th:text="${outcomeItem.outcomeItemName}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

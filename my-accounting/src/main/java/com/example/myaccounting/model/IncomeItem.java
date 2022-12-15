@@ -1,12 +1,16 @@
 package com.example.myaccounting.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "income_item")
 public class IncomeItem {
@@ -14,6 +18,7 @@ public class IncomeItem {
     @GeneratedValue(generator = "income_item_id", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "income_item_id", initialValue = 1, allocationSize = 1)
     private Long incomeItemId;
+
     @Column(name = "income_item_name")
     private String incomeItemName;
 
@@ -38,14 +43,5 @@ public class IncomeItem {
         this.incomeItemName = incomeItemName;
     }
 
-    @SuppressWarnings("all")
-    public IncomeItem() {
-    }
-
-    @SuppressWarnings("all")
-    public IncomeItem(final Long incomeItemId, final String incomeItemName) {
-        this.incomeItemId = incomeItemId;
-        this.incomeItemName = incomeItemName;
-    }
     //</editor-fold>
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add outcome item form</title>
+</head>
+<body>
+<div>
+  <h2>Add outcome item form</h2>
+
+  <form action="#" th:action="@{/api/v1/outcomeItem/addOutcomeItem}" method="post" th:object="${outcomeItem}">
+    <label>Outcome item: </label><input type="text" th:field="*{outcomeItemName}"><br>
+    <br><br>
+    <button type="submit">Add outcome item</button>
+  </form>
+</div>
+</body>
+</html>

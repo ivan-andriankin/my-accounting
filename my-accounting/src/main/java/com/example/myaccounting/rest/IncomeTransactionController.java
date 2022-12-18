@@ -50,13 +50,13 @@ public class IncomeTransactionController {
     @Autowired
     private IncomeItemService incomeItemService;
 
-    @GetMapping("/showIncomeTransactions")
+    @GetMapping("/showIncomeTransactions")  //show table with all income transactions
     public String showIncomeTransactionsPage(Model model) {
         model.addAttribute("incomeTransactions", incomeTransactionService.getAllIncomeTransactions());
-        return "show_income_transactions";
+        return "display/show_income_transactions";
     }
 
-    @GetMapping("/addIncomeTransaction")    // NOT WORKING YET
+    @GetMapping("/addIncomeTransaction")    //show form for adding income transactions
     public String showAddIncomeTransactionForm(Model model) {
         IncomeTransaction incomeTransaction = new IncomeTransaction();
         model.addAttribute("incomeTransaction", incomeTransaction);
@@ -64,24 +64,11 @@ public class IncomeTransactionController {
         return "add_income_transaction_form";
     }
 
-    /*@GetMapping("/addIncomeItem")       //show form for adding income item
-    public String showAddIncomeItemForm(Model model) {
-        IncomeItem incomeItem = new IncomeItem();
-        model.addAttribute("incomeItem", incomeItem);
-        return "add_income_item_form";
-    }*/
-
-    @PostMapping("/addIncomeTransaction")   // NOT WORKING YET
+    @PostMapping("/addIncomeTransaction")   //sends request for adding income transactions
     public String addIncomeTransaction(@ModelAttribute("incomeTransaction") IncomeTransaction incomeTransaction) {
         incomeTransactionService.saveIncomeTransaction(incomeTransaction);
         return "redirect:/api/v1/incomeTransaction/showIncomeTransactions";
     }
-
-    /*@PostMapping("/addIncomeItem")      //sends request for adding income item
-    public String addIncomeItem(@ModelAttribute("incomeItem") IncomeItem incomeItem) {
-        incomeItemService.saveIncomeItem(incomeItem);
-        return "redirect:/api/v1/incomeItem/showIncomeItems";
-    }*/
     // *** End of Thymeleaf ***
 
 

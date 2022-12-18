@@ -51,7 +51,7 @@ public class OutcomeItemController {
     @GetMapping("/showOutcomeItems")
     public String showOutcomeItemsPage(Model model) {
         model.addAttribute("outcomeItems", outcomeItemService.getAllOutcomeItems());
-        return "show_outcome_items";
+        return "display/show_outcome_items";
     }
 
     @GetMapping("/addOutcomeItem")

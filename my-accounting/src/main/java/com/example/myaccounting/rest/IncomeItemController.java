@@ -50,10 +50,10 @@ public class IncomeItemController {
 
 
     //  *** Thymeleaf: ***
-    @GetMapping("/showIncomeItems")     //show table with all account balances
+    @GetMapping("/showIncomeItems")     //show table with all income items
     public String showIncomeItemsPage(Model model) {
         model.addAttribute("incomeItems", incomeItemService.getAllIncomeItems());
-        return "show_income_items";
+        return "display/show_income_items";
     }
 
     @GetMapping("/addIncomeItem")       //show form for adding income item

@@ -52,7 +52,7 @@ public class AccountBalanceController {
     @GetMapping("/showAccounts")
     public String showAccountsPage(Model model) {
         model.addAttribute("accounts", accountBalanceService.getAllAccountBalances());
-        return "show_account_balances";
+        return "display/show_account_balances";
     }
 
     @GetMapping("/addAccountBalance")
@@ -67,9 +67,6 @@ public class AccountBalanceController {
         accountBalanceService.saveAccountBalance(accountBalance);
         return "redirect:/api/v1/accountBalance/showAccounts";
     }
-
-
     // *** End of Thymeleaf ***
-
 
 }

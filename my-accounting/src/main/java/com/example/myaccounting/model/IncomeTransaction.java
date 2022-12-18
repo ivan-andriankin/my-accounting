@@ -25,9 +25,8 @@ public class IncomeTransaction {
     @SequenceGenerator(name = "income_transaction_id", initialValue = 1, allocationSize = 1)
     private Long incomeTransactionId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "income_item_id")
-    private IncomeItem incomeItem;
+    @Column(name = "income_item_id", nullable = false)
+    private Long incomeItemId;
 
     @Column(name = "income_transaction_mny")
     private double incomeTransactionMny;

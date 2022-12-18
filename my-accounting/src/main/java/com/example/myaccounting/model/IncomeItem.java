@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,13 +15,15 @@ import java.util.List;
 @Entity
 @Table(name = "income_item")
 public class IncomeItem {
-    @SuppressWarnings("all")
+
     @Id
     @GeneratedValue(generator = "income_item_id", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "income_item_id", initialValue = 1, allocationSize = 1)
     private Long incomeItemId;
 
-    @SuppressWarnings("all")
+    @OneToMany(mappedBy = "incomeItemId", cascade = CascadeType.ALL)
+    private Set<IncomeTransaction> incomeTransactions;
+
     @Column(name = "income_item_name")
     private String incomeItemName;
 

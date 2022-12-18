@@ -23,9 +23,8 @@ public class OutcomeTransaction {
     @SequenceGenerator(name = "outcome_transaction_id", initialValue = 1, allocationSize = 1)
     private Long outcomeTransactionId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "outcome_item_id")
-    private OutcomeItem outcomeItemId;
+    @Column(name = "outcome_item_id", nullable = false)
+    private Long outcomeItemId;
 
     @Column(name = "outcome_transaction_mny")
     private double outcomeTransactionMny;

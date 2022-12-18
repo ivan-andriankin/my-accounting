@@ -19,8 +19,8 @@ public class IncomeTransactionService {
         return (List<IncomeTransaction>) incomeTransactionRepository.findAll();
     }
 
-    public Optional<IncomeTransaction> getIncomeTransactionById(Long incomeTransactionId) {
-        return incomeTransactionRepository.findById(incomeTransactionId);
+    public IncomeTransaction getIncomeTransactionById(Long incomeTransactionId) {
+        return incomeTransactionRepository.findById(incomeTransactionId).get();
     }
 
     public IncomeTransaction saveIncomeTransaction(IncomeTransaction incomeTransaction) {

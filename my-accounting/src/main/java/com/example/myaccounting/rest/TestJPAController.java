@@ -19,7 +19,6 @@ public class TestJPAController {
 
     @Autowired
     TestJPAService testJPAService;
-
     @Autowired
     private IncomeItemService incomeItemService;
 

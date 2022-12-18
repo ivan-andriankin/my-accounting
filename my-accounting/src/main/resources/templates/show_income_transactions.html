@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h3>Income items</h3>
+
+  <div>
+    <table border="1" bordercolor="1px" cellspacing="0px" cellpadding="2px">
+      <thead>
+      <tr>
+        <th>Income transaction id</th>
+        <th>Income transaction date</th>
+        <th>Income transaction mny</th>
+        <th>Income item id</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="incomeTransaction : ${incomeTransactions}">
+        <td th:text="${incomeTransaction.incomeTransactionId}"></td>
+        <td th:text="${incomeTransaction.incomeTransactionDate}"></td>
+        <td th:text="${incomeTransaction.incomeTransactionMny}"></td>
+        <td th:text="${incomeTransaction.incomeItem}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

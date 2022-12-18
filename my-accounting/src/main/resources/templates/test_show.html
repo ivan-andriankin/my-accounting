@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Test show</title>
+</head>
+<body>
+
+  <div>
+    <table border="1" bordercolor="1px" cellspacing="0px" cellpadding="2px">
+      <thead>
+      <tr>
+        <th>Income item id</th>
+        <th>Income transaction id</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td th:text="${incomeItem.incomeItemId}"></td>
+        <td ></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

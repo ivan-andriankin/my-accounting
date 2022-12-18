@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,34 +15,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "income_item")
 public class IncomeItem {
+    @SuppressWarnings("all")
     @Id
     @GeneratedValue(generator = "income_item_id", strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "income_item_id", initialValue = 1, allocationSize = 1)
     private Long incomeItemId;
 
+    @SuppressWarnings("all")
     @Column(name = "income_item_name")
     private String incomeItemName;
 
-    //<editor-fold defaultstate="collapsed" desc="delombok">
-    @SuppressWarnings("all")
-    public Long getIncomeItemId() {
-        return this.incomeItemId;
-    }
-
-    @SuppressWarnings("all")
-    public String getIncomeItemName() {
-        return this.incomeItemName;
-    }
-
-    @SuppressWarnings("all")
-    public void setIncomeItemId(final Long incomeItemId) {
-        this.incomeItemId = incomeItemId;
-    }
-
-    @SuppressWarnings("all")
-    public void setIncomeItemName(final String incomeItemName) {
-        this.incomeItemName = incomeItemName;
-    }
-
-    //</editor-fold>
 }

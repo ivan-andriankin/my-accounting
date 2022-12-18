@@ -1,6 +1,5 @@
 package com.example.myaccounting.service;
 
-import com.example.myaccounting.model.AccountBalance;
 import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.repository.IncomeItemRepository;
 import org.springframework.stereotype.Service;
@@ -20,8 +19,8 @@ public class IncomeItemService {
         return (List<IncomeItem>) incomeItemRepository.findAll();
     }
 
-    public Optional<IncomeItem> getIncomeItemById(Long incomeItemId) {
-        return incomeItemRepository.findById(incomeItemId);
+    public IncomeItem getIncomeItemById(Long incomeItemId) {
+        return incomeItemRepository.findById(incomeItemId).get();
     }
 
     public IncomeItem saveIncomeItem(IncomeItem incomeItem) {
@@ -38,4 +37,5 @@ public class IncomeItemService {
         incomeItemRepository.delete(incomeItem);
         return incomeItem;
     }
+
 }

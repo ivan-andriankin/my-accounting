@@ -37,4 +37,5 @@ public class IncomeTransactionService {
         incomeTransactionRepository.delete(incomeTransaction);
         return incomeTransaction;
     }
+
 }

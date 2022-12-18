@@ -2,6 +2,7 @@ package com.example.myaccounting.rest;
 
 import com.example.myaccounting.model.AccountBalance;
 import com.example.myaccounting.model.IncomeItem;
+import com.example.myaccounting.model.IncomeTransaction;
 import com.example.myaccounting.service.IncomeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,25 +50,24 @@ public class IncomeItemController {
 
 
     //  *** Thymeleaf: ***
-    @GetMapping("/showIncomeItems")
+    @GetMapping("/showIncomeItems")     //show table with all account balances
     public String showIncomeItemsPage(Model model) {
         model.addAttribute("incomeItems", incomeItemService.getAllIncomeItems());
         return "show_income_items";
     }
 
-    @GetMapping("/addIncomeItem")
+    @GetMapping("/addIncomeItem")       //show form for adding income item
     public String showAddIncomeItemForm(Model model) {
         IncomeItem incomeItem = new IncomeItem();
         model.addAttribute("incomeItem", incomeItem);
-        //model.addAttribute("accountBalance", accountBalanceService.saveAccountBalance());
         return "add_income_item_form";
     }
 
-    @PostMapping("/addIncomeItem")
+    @PostMapping("/addIncomeItem")      //sends request for adding income item
     public String addIncomeItem(@ModelAttribute("incomeItem") IncomeItem incomeItem) {
         incomeItemService.saveIncomeItem(incomeItem);
         return "redirect:/api/v1/incomeItem/showIncomeItems";
     }
-
     // *** End of Thymeleaf ***
+
 }

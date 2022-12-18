@@ -8,16 +8,24 @@
   <div>
     <h2>Add income item form</h2>
 
-    <form action="#" th:action="@{/api/v1/incomeTransaction/addIncomeTransaction}" method="post" th:object="${incomeTransaction}">
-        <label>Income item: </label><input type="text" th:field="*{incomeItemName}"><br>
-        <label>Income transaction money: </label><input type="text" th:field="*{incomeTransactionMny}"><br>
+      // NOT DONE YET
+
+    <form action="#" th:action="@{/api/v1/incomeItem/addIncomeTransaction}" method="post">
+        <label>Income transaction id: </label><input type="text" th:field="@{incomeTransaction.incomeTransactionId}"><br>
+        <label>Income item id: </label><input type="text" th:field="${incomeItem.incomeItemId}"><br>
+        <label>Income item name: </label>
+            <select th:field="${incomeItem.incomeItemName}">
+                <option th:each="incomeItem: ${incomeItemList}" th:value="${incomeItem}" th:text="${incomeItem}"></option>
+            </select><br>
+        <label>Income transaction money: </label><input type="text" th:field="${incomeTransaction.incomeTransactionMny}"><br>
+        <label>Income transaction date: </label><input type="text" th:field="${incomeTransaction.incomeTransactionDate}"><br>
 
         <br><br>
-        <button type="submit">Add income item</button>
-        incomeTransactionId
-        incomeItemId
-        incomeTransactionMny
-        incomeTransactionDate
+        <button type="submit">Add income item</button><br>
+        incomeTransactionId<br>
+        incomeItemId<br>
+        incomeTransactionMny<br>
+        incomeTransactionDate<br>
     </form>
   </div>
 </body>

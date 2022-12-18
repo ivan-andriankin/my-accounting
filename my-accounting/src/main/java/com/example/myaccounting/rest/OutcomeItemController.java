@@ -48,25 +48,23 @@ public class OutcomeItemController {
 
 
     //  *** Thymeleaf: ***
-    @GetMapping("/showOutcomeItems")
+    @GetMapping("/showOutcomeItems")     //show table with all outcome items
     public String showOutcomeItemsPage(Model model) {
         model.addAttribute("outcomeItems", outcomeItemService.getAllOutcomeItems());
         return "display/show_outcome_items";
     }
 
-    @GetMapping("/addOutcomeItem")
+    @GetMapping("/addOutcomeItem")       //show form for adding outcome item
     public String showAddOutcomeItemForm(Model model) {
         OutcomeItem outcomeItem = new OutcomeItem();
         model.addAttribute("outcomeItem", outcomeItem);
-        //model.addAttribute("accountBalance", accountBalanceService.saveAccountBalance());
         return "add_outcome_item_form";
     }
 
-    @PostMapping("/addOutcomeItem")
+    @PostMapping("/addOutcomeItem")      //sends request for adding outcome item
     public String addOutcomeItem(@ModelAttribute("outcomeItem") OutcomeItem outcomeItem) {
         outcomeItemService.saveOutcomeItem(outcomeItem);
         return "redirect:/api/v1/outcomeItem/showOutcomeItems";
     }
-
     // *** End of Thymeleaf ***
 }

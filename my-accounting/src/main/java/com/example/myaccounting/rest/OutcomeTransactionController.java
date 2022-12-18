@@ -1,10 +1,15 @@
 package com.example.myaccounting.rest;
 
+import com.example.myaccounting.model.IncomeTransaction;
 import com.example.myaccounting.model.OutcomeTransaction;
+import com.example.myaccounting.service.IncomeItemService;
+import com.example.myaccounting.service.OutcomeItemService;
 import com.example.myaccounting.service.OutcomeTransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +47,29 @@ public class OutcomeTransactionController {
     public String deleteOutcomeTransaction(@RequestBody OutcomeTransaction outcomeTransaction) {
         return "Outcome transaction has been deleted.";
     }
+
+    //  *** Thymeleaf: ***
+    @Autowired
+    private OutcomeItemService outcomeItemService;
+
+    @GetMapping("/showOutcomeTransactions")  //show table with all outcome transactions
+    public String showOutcomeTransactionsPage(Model model) {
+        model.addAttribute("outcomeTransactions", outcomeTransactionService.getAllOutcomeTransactions());
+        return "display/show_outcome_transactions";
+    }
+
+    @GetMapping("/addOutcomeTransaction")    //show form for adding outcome transactions
+    public String showAddOutcomeTransactionForm(Model model) {
+        OutcomeTransaction outcomeTransaction = new OutcomeTransaction();
+        model.addAttribute("outcomeTransaction", outcomeTransaction);
+        model.addAttribute("outcomeItems", outcomeItemService.getAllOutcomeItems());
+        return "add_outcome_transaction_form";
+    }
+
+    @PostMapping("/addOutcomeTransaction")   //sends request for adding outcome transactions
+    public String addOutcomeTransaction(@ModelAttribute("outcomeTransaction") OutcomeTransaction outcomeTransaction) {
+        outcomeTransactionService.saveOutcomeTransaction(outcomeTransaction);
+        return "redirect:/api/v1/outcomeTransaction/showOutcomeTransactions";
+    }
+    // *** End of Thymeleaf ***
 }

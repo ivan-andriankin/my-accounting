@@ -2,21 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
-    <title>Add income item form</title>
+    <title>Add income transaction form</title>
 </head>
 <body>
   <div>
-    <h2>Add income item form</h2>
+    <h2>Add income transaction form</h2>
 
     <form action="#" th:action="@{/api/v1/incomeTransaction/addIncomeTransaction}" method="post" th:object="${incomeTransaction}">
-        <!--<label>Income transaction id: </label><input type="text" th:field="${incomeTransaction.incomeTransactionId}"><br>-->
-        <!--<label>Income item id: </label><input type="text" th:field="${incomeTransaction.incomeItemId}"><br>-->
         <label>Income item name: </label>
             <select th:field="${incomeTransaction.incomeItemId}">
                 <option th:each="incomeItem: ${incomeItems}" th:value="${incomeItem.incomeItemId}" th:text="${incomeItem.incomeItemName}"></option>
             </select><br>
         <label>Income transaction money: </label><input type="text" th:field="${incomeTransaction.incomeTransactionMny}">
-        <!--<label>Income transaction date: </label><input type="text" th:field="${incomeTransaction.incomeTransactionDate}"><br>-->
 
         <br><br>
         <button type="submit">Add income item</button>

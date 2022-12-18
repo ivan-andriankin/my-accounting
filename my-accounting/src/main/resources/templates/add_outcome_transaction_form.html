@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Add outcome transaction form</title>
+</head>
+<body>
+  <div>
+    <h2>Add outcome transaction form</h2>
+
+    <form action="#" th:action="@{/api/v1/outcomeTransaction/addOutcomeTransaction}" method="post" th:object="${outcomeTransaction}">
+        <label>Outcome item name: </label>
+            <select th:field="${outcomeTransaction.outcomeItemId}">
+                <option th:each="outcomeItem: ${outcomeItems}" th:value="${outcomeItem.outcomeItemId}" th:text="${outcomeItem.outcomeItemName}"></option>
+            </select><br>
+        <label>Outcome transaction money: </label><input type="text" th:field="${outcomeTransaction.outcomeTransactionMny}">
+
+        <br><br>
+        <button type="submit">Add outcome item</button>
+    </form>
+  </div>
+</body>
+</html>

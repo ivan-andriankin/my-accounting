@@ -59,7 +59,6 @@ public class AccountBalanceController {
     public String showAddAccountBalanceForm(Model model) {
         AccountBalance accountBalance = new AccountBalance();
         model.addAttribute("accountBalance", accountBalance);
-        //model.addAttribute("accountBalance", accountBalanceService.saveAccountBalance());
         return "add_account_balance_form";
     }
 

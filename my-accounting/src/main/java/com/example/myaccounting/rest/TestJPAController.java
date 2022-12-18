@@ -2,6 +2,7 @@ package com.example.myaccounting.rest;
 
 import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.service.IncomeItemService;
+import com.example.myaccounting.service.IncomeTransactionService;
 import com.example.myaccounting.service.TestJPAService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,8 @@ public class TestJPAController {
     TestJPAService testJPAService;
     @Autowired
     private IncomeItemService incomeItemService;
+    @Autowired
+    private IncomeTransactionService incomeTransactionService;
 
     @GetMapping("/111")
     public ResponseEntity<List<IncomeItem>> displayRecordsFromDB() {
@@ -35,7 +38,9 @@ public class TestJPAController {
     @GetMapping("/testShow")
     public String showIncomeItemsPage(Model model) {
         Long incomeItemId = (long) 1;
+        Long incomeTransactionId = (long) 1;
         model.addAttribute("incomeItem", incomeItemService.getIncomeItemById(incomeItemId));
+        model.addAttribute("incomeTransaction", incomeTransactionService.getIncomeTransactionById(incomeTransactionId));
         return "test_show";
     }
 }

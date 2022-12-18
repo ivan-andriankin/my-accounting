@@ -8,24 +8,18 @@
   <div>
     <h2>Add income item form</h2>
 
-      // NOT DONE YET
-
-    <form action="#" th:action="@{/api/v1/incomeItem/addIncomeTransaction}" method="post">
-        <label>Income transaction id: </label><input type="text" th:field="@{incomeTransaction.incomeTransactionId}"><br>
-        <label>Income item id: </label><input type="text" th:field="${incomeItem.incomeItemId}"><br>
+    <form action="#" th:action="@{/api/v1/incomeTransaction/addIncomeTransaction}" method="post" th:object="${incomeTransaction}">
+        <!--<label>Income transaction id: </label><input type="text" th:field="${incomeTransaction.incomeTransactionId}"><br>-->
+        <!--<label>Income item id: </label><input type="text" th:field="${incomeTransaction.incomeItemId}"><br>-->
         <label>Income item name: </label>
-            <select th:field="${incomeItem.incomeItemName}">
-                <option th:each="incomeItem: ${incomeItemList}" th:value="${incomeItem}" th:text="${incomeItem}"></option>
+            <select th:field="${incomeTransaction.incomeItemId}">
+                <option th:each="incomeItem: ${incomeItems}" th:value="${incomeItem.incomeItemId}" th:text="${incomeItem.incomeItemName}"></option>
             </select><br>
-        <label>Income transaction money: </label><input type="text" th:field="${incomeTransaction.incomeTransactionMny}"><br>
-        <label>Income transaction date: </label><input type="text" th:field="${incomeTransaction.incomeTransactionDate}"><br>
+        <label>Income transaction money: </label><input type="text" th:field="${incomeTransaction.incomeTransactionMny}">
+        <!--<label>Income transaction date: </label><input type="text" th:field="${incomeTransaction.incomeTransactionDate}"><br>-->
 
         <br><br>
-        <button type="submit">Add income item</button><br>
-        incomeTransactionId<br>
-        incomeItemId<br>
-        incomeTransactionMny<br>
-        incomeTransactionDate<br>
+        <button type="submit">Add income item</button>
     </form>
   </div>
 </body>

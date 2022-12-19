@@ -58,7 +58,7 @@ public class OutcomeItemController {
     public String showAddOutcomeItemForm(Model model) {
         OutcomeItem outcomeItem = new OutcomeItem();
         model.addAttribute("outcomeItem", outcomeItem);
-        return "add_outcome_item_form";
+        return "forms/add_outcome_item_form";
     }
 
     @PostMapping("/addOutcomeItem")      //sends request for adding outcome item

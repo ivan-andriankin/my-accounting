@@ -63,7 +63,7 @@ public class OutcomeTransactionController {
         OutcomeTransaction outcomeTransaction = new OutcomeTransaction();
         model.addAttribute("outcomeTransaction", outcomeTransaction);
         model.addAttribute("outcomeItems", outcomeItemService.getAllOutcomeItems());
-        return "add_outcome_transaction_form";
+        return "forms/add_outcome_transaction_form";
     }
 
     @PostMapping("/addOutcomeTransaction")   //sends request for adding outcome transactions

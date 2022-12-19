@@ -60,7 +60,7 @@ public class IncomeItemController {
     public String showAddIncomeItemForm(Model model) {
         IncomeItem incomeItem = new IncomeItem();
         model.addAttribute("incomeItem", incomeItem);
-        return "add_income_item_form";
+        return "forms/add_income_item_form";
     }
 
     @PostMapping("/addIncomeItem")      //sends request for adding income item

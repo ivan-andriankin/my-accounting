@@ -59,7 +59,7 @@ public class AccountBalanceController {
     public String showAddAccountBalanceForm(Model model) {
         AccountBalance accountBalance = new AccountBalance();
         model.addAttribute("accountBalance", accountBalance);
-        return "add_account_balance_form";
+        return "forms/add_account_balance_form";
     }
 
     @PostMapping("/addAccountBalance")

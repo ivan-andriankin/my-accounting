@@ -61,7 +61,7 @@ public class IncomeTransactionController {
         IncomeTransaction incomeTransaction = new IncomeTransaction();
         model.addAttribute("incomeTransaction", incomeTransaction);
         model.addAttribute("incomeItems", incomeItemService.getAllIncomeItems());
-        return "add_income_transaction_form";
+        return "forms/add_income_transaction_form";
     }
 
     @PostMapping("/addIncomeTransaction")   //sends request for adding income transactions

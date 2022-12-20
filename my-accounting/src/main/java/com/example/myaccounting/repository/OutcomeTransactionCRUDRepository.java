@@ -1,9 +1,9 @@
 package com.example.myaccounting.repository;
 
-import com.example.myaccounting.model.IncomeItem;
+import com.example.myaccounting.model.OutcomeTransaction;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IncomeItemRepository extends CrudRepository<IncomeItem, Long> {
+public interface OutcomeTransactionCRUDRepository extends CrudRepository<OutcomeTransaction, Long> {
 }

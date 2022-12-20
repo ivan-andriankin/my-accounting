@@ -1,8 +1,7 @@
 package com.example.myaccounting.service;
 
-import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.model.OutcomeItem;
-import com.example.myaccounting.repository.OutcomeItemRepository;
+import com.example.myaccounting.repository.OutcomeItemCRUDRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,32 +9,32 @@ import java.util.Optional;
 
 @Service
 public class OutcomeItemService {
-    private OutcomeItemRepository outcomeItemRepository;
+    private OutcomeItemCRUDRepository outcomeItemCRUDRepository;
 
-    public OutcomeItemService(OutcomeItemRepository outcomeItemRepository) {
-        this.outcomeItemRepository = outcomeItemRepository;
+    public OutcomeItemService(OutcomeItemCRUDRepository outcomeItemCRUDRepository) {
+        this.outcomeItemCRUDRepository = outcomeItemCRUDRepository;
     }
 
     public List<OutcomeItem> getAllOutcomeItems() {
-        return (List<OutcomeItem>) outcomeItemRepository.findAll();
+        return (List<OutcomeItem>) outcomeItemCRUDRepository.findAll();
     }
 
-    public Optional<OutcomeItem> getOutcomeItemById(Long outcomeItemId) {
-        return outcomeItemRepository.findById(outcomeItemId);
+    public OutcomeItem getOutcomeItemById(Long outcomeItemId) {
+        return outcomeItemCRUDRepository.findById(outcomeItemId).get();
     }
 
     public OutcomeItem saveOutcomeItem(OutcomeItem outcomeItem) {
-        outcomeItemRepository.save(outcomeItem);
+        outcomeItemCRUDRepository.save(outcomeItem);
         return outcomeItem;
     }
 
     public OutcomeItem updateOutcomeItem(OutcomeItem outcomeItem) {
-        outcomeItemRepository.save(outcomeItem);
+        outcomeItemCRUDRepository.save(outcomeItem);
         return outcomeItem;
     }
 
     public OutcomeItem deleteIncomeItem(OutcomeItem outcomeItem) {
-        outcomeItemRepository.delete(outcomeItem);
+        outcomeItemCRUDRepository.delete(outcomeItem);
         return outcomeItem;
     }
 }

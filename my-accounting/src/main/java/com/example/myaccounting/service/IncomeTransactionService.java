@@ -1,41 +1,50 @@
 package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.IncomeTransaction;
-import com.example.myaccounting.repository.IncomeTransactionRepository;
+import com.example.myaccounting.repository.IncomeTransactionCRUDRepository;
+import com.example.myaccounting.repository.IncomeTransactionJPARepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class IncomeTransactionService {
-    private IncomeTransactionRepository incomeTransactionRepository;
+    private IncomeTransactionCRUDRepository incomeTransactionCRUDRepository;
 
-    public IncomeTransactionService(IncomeTransactionRepository incomeTransactionRepository) {
-        this.incomeTransactionRepository = incomeTransactionRepository;
+    public IncomeTransactionService(IncomeTransactionCRUDRepository incomeTransactionCRUDRepository) {
+        this.incomeTransactionCRUDRepository = incomeTransactionCRUDRepository;
     }
 
     public List<IncomeTransaction> getAllIncomeTransactions() {
-        return (List<IncomeTransaction>) incomeTransactionRepository.findAll();
+        return (List<IncomeTransaction>) incomeTransactionCRUDRepository.findAll();
     }
 
     public IncomeTransaction getIncomeTransactionById(Long incomeTransactionId) {
-        return incomeTransactionRepository.findById(incomeTransactionId).get();
+        return incomeTransactionCRUDRepository.findById(incomeTransactionId).get();
     }
 
     public IncomeTransaction saveIncomeTransaction(IncomeTransaction incomeTransaction) {
-        incomeTransactionRepository.save(incomeTransaction);
+        incomeTransactionCRUDRepository.save(incomeTransaction);
         return incomeTransaction;
     }
 
     public IncomeTransaction updateIncomeTransaction(IncomeTransaction incomeTransaction) {
-        incomeTransactionRepository.save(incomeTransaction);
+        incomeTransactionCRUDRepository.save(incomeTransaction);
         return incomeTransaction;
     }
 
     public IncomeTransaction deleteIncomeTransaction(IncomeTransaction incomeTransaction) {
-        incomeTransactionRepository.delete(incomeTransaction);
+        incomeTransactionCRUDRepository.delete(incomeTransaction);
         return incomeTransaction;
+    }
+
+    // JPA:
+    @Autowired
+    private IncomeTransactionJPARepository incomeTransactionJPARepository;
+
+    public double getIncomeSum() {
+        return incomeTransactionJPARepository.getIncomeSum();
     }
 
 }

@@ -2,7 +2,7 @@ package com.example.myaccounting.rest;
 
 import com.example.myaccounting.model.AccountBalance;
 import com.example.myaccounting.service.AccountBalanceService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,12 +14,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/v1/accountBalance")
 public class AccountBalanceController {
-
+    @Autowired
     private AccountBalanceService accountBalanceService;
-
-    public AccountBalanceController(AccountBalanceService accountBalanceService) {
-        this.accountBalanceService = accountBalanceService;
-    }
 
     @GetMapping
     public ResponseEntity<List<AccountBalance>> getAllAccountBalances() {
@@ -47,11 +43,11 @@ public class AccountBalanceController {
     }
 
 
-
     //  *** Thymeleaf: ***
     @GetMapping("/showAccounts")
     public String showAccountsPage(Model model) {
         model.addAttribute("accounts", accountBalanceService.getAllAccountBalances());
+        model.addAttribute("totalAccountsMoney", String.format("%.2f", accountBalanceService.getAccountsSum()));
         return "display/show_account_balances";
     }
 

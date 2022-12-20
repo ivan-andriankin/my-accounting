@@ -1,6 +1,5 @@
 package com.example.myaccounting.rest;
 
-import com.example.myaccounting.model.IncomeItem;
 import com.example.myaccounting.model.IncomeTransaction;
 import com.example.myaccounting.service.IncomeItemService;
 import com.example.myaccounting.service.IncomeTransactionService;
@@ -45,7 +44,6 @@ public class IncomeTransactionController {
     }
 
 
-
     //  *** Thymeleaf: ***
     @Autowired
     private IncomeItemService incomeItemService;
@@ -53,6 +51,7 @@ public class IncomeTransactionController {
     @GetMapping("/showIncomeTransactions")  //show table with all income transactions
     public String showIncomeTransactionsPage(Model model) {
         model.addAttribute("incomeTransactions", incomeTransactionService.getAllIncomeTransactions());
+        model.addAttribute("totalIncomeMoney", String.format("%.2f", incomeTransactionService.getIncomeSum()));
         return "display/show_income_transactions";
     }
 
@@ -70,6 +69,4 @@ public class IncomeTransactionController {
         return "redirect:/api/v1/incomeTransaction/showIncomeTransactions";
     }
     // *** End of Thymeleaf ***
-
-
 }

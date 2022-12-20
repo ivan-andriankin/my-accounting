@@ -1,40 +1,38 @@
 package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.IncomeItem;
-import com.example.myaccounting.repository.IncomeItemRepository;
+import com.example.myaccounting.repository.IncomeItemCRUDRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class IncomeItemService {
-    private IncomeItemRepository incomeItemRepository;
+    private IncomeItemCRUDRepository incomeItemCRUDRepository;
 
-    public IncomeItemService(IncomeItemRepository incomeItemRepository) {
-        this.incomeItemRepository = incomeItemRepository;
+    public IncomeItemService(IncomeItemCRUDRepository incomeItemCRUDRepository) {
+        this.incomeItemCRUDRepository = incomeItemCRUDRepository;
     }
 
     public List<IncomeItem> getAllIncomeItems() {
-        return (List<IncomeItem>) incomeItemRepository.findAll();
+        return (List<IncomeItem>) incomeItemCRUDRepository.findAll();
     }
 
     public IncomeItem getIncomeItemById(Long incomeItemId) {
-        return incomeItemRepository.findById(incomeItemId).get();
+        return incomeItemCRUDRepository.findById(incomeItemId).get();
     }
 
     public IncomeItem saveIncomeItem(IncomeItem incomeItem) {
-        incomeItemRepository.save(incomeItem);
+        incomeItemCRUDRepository.save(incomeItem);
         return incomeItem;
     }
 
     public IncomeItem updateIncomeItem(IncomeItem incomeItem) {
-        incomeItemRepository.save(incomeItem);
+        incomeItemCRUDRepository.save(incomeItem);
         return incomeItem;
     }
 
     public IncomeItem deleteIncomeItem(IncomeItem incomeItem) {
-        incomeItemRepository.delete(incomeItem);
+        incomeItemCRUDRepository.delete(incomeItem);
         return incomeItem;
     }
 

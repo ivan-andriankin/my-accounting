@@ -1,42 +1,49 @@
 package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.AccountBalance;
-import com.example.myaccounting.repository.AccountBalanceRepository;
+import com.example.myaccounting.repository.AccountBalanceCRUDRepository;
+import com.example.myaccounting.repository.AccountBalanceJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class AccountBalanceService {
+    private AccountBalanceCRUDRepository accountBalanceCRUDRepository;
 
-    private AccountBalanceRepository accountBalanceRepository;
-
-    public AccountBalanceService(AccountBalanceRepository accountBalanceRepository) {
-        this.accountBalanceRepository = accountBalanceRepository;
+    public AccountBalanceService(AccountBalanceCRUDRepository accountBalanceCRUDRepository) {
+        this.accountBalanceCRUDRepository = accountBalanceCRUDRepository;
     }
 
     public List<AccountBalance> getAllAccountBalances() {
-        return (List<AccountBalance>) accountBalanceRepository.findAll();
+        return (List<AccountBalance>) accountBalanceCRUDRepository.findAll();
     }
 
-    public Optional<AccountBalance> getAccountBalanceById(Long accountId) {
-        return accountBalanceRepository.findById(accountId);
+    public AccountBalance getAccountBalanceById(Long accountId) {
+        return accountBalanceCRUDRepository.findById(accountId).get();
     }
 
     public AccountBalance saveAccountBalance(AccountBalance accountBalance) {
-        accountBalanceRepository.save(accountBalance);
+        accountBalanceCRUDRepository.save(accountBalance);
         return accountBalance;
     }
 
     public AccountBalance updateAccountBalance(AccountBalance accountBalance) {
-        accountBalanceRepository.save(accountBalance);
+        accountBalanceCRUDRepository.save(accountBalance);
         return accountBalance;
     }
 
     public AccountBalance deleteAccountBalance(AccountBalance accountBalance) {
-        accountBalanceRepository.delete(accountBalance);
+        accountBalanceCRUDRepository.delete(accountBalance);
         return accountBalance;
+    }
+
+    // JPA:
+    @Autowired
+    private AccountBalanceJPARepository accountBalanceJPARepository;
+
+    public double getAccountsSum() {
+        return accountBalanceJPARepository.getAccountsSum();
     }
 
 }

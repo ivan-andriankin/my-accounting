@@ -1,8 +1,6 @@
 package com.example.myaccounting.rest;
 
-import com.example.myaccounting.model.IncomeTransaction;
 import com.example.myaccounting.model.OutcomeTransaction;
-import com.example.myaccounting.service.IncomeItemService;
 import com.example.myaccounting.service.OutcomeItemService;
 import com.example.myaccounting.service.OutcomeTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +15,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/v1/outcomeTransaction")
 public class OutcomeTransactionController {
+    @Autowired
     OutcomeTransactionService outcomeTransactionService;
-
-    public OutcomeTransactionController(OutcomeTransactionService outcomeTransactionService) {
-        this.outcomeTransactionService = outcomeTransactionService;
-    }
 
     @GetMapping
     public ResponseEntity<List<OutcomeTransaction>> getAllOutcomeTransactions() {
@@ -48,6 +43,7 @@ public class OutcomeTransactionController {
         return "Outcome transaction has been deleted.";
     }
 
+
     //  *** Thymeleaf: ***
     @Autowired
     private OutcomeItemService outcomeItemService;
@@ -55,6 +51,7 @@ public class OutcomeTransactionController {
     @GetMapping("/showOutcomeTransactions")  //show table with all outcome transactions
     public String showOutcomeTransactionsPage(Model model) {
         model.addAttribute("outcomeTransactions", outcomeTransactionService.getAllOutcomeTransactions());
+        model.addAttribute("totalOutcomeMoney", String.format("%.2f", outcomeTransactionService.getOutcomeSum()));
         return "display/show_outcome_transactions";
     }
 

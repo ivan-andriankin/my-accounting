@@ -1,7 +1,10 @@
 package com.example.myaccounting.service;
 
 import com.example.myaccounting.model.OutcomeTransaction;
-import com.example.myaccounting.repository.OutcomeTransactionRepository;
+import com.example.myaccounting.repository.IncomeTransactionJPARepository;
+import com.example.myaccounting.repository.OutcomeTransactionCRUDRepository;
+import com.example.myaccounting.repository.OutcomeTransactionJPARepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,32 +12,40 @@ import java.util.Optional;
 
 @Service
 public class OutcomeTransactionService {
-    private OutcomeTransactionRepository outcomeTransactionRepository;
+    private OutcomeTransactionCRUDRepository outcomeTransactionCRUDRepository;
 
-    public OutcomeTransactionService(OutcomeTransactionRepository outcomeTransactionRepository) {
-        this.outcomeTransactionRepository = outcomeTransactionRepository;
+    public OutcomeTransactionService(OutcomeTransactionCRUDRepository outcomeTransactionCRUDRepository) {
+        this.outcomeTransactionCRUDRepository = outcomeTransactionCRUDRepository;
     }
 
     public List<OutcomeTransaction> getAllOutcomeTransactions() {
-        return (List<OutcomeTransaction>) outcomeTransactionRepository.findAll();
+        return (List<OutcomeTransaction>) outcomeTransactionCRUDRepository.findAll();
     }
 
-    public Optional<OutcomeTransaction> getOutcomeTransactionById(Long outcomeTransactionId) {
-        return outcomeTransactionRepository.findById(outcomeTransactionId);
+    public OutcomeTransaction getOutcomeTransactionById(Long outcomeTransactionId) {
+        return outcomeTransactionCRUDRepository.findById(outcomeTransactionId).get();
     }
 
     public OutcomeTransaction saveOutcomeTransaction(OutcomeTransaction outcomeTransaction) {
-        outcomeTransactionRepository.save(outcomeTransaction);
+        outcomeTransactionCRUDRepository.save(outcomeTransaction);
         return outcomeTransaction;
     }
 
     public OutcomeTransaction updateOutcomeTransaction(OutcomeTransaction outcomeTransaction) {
-        outcomeTransactionRepository.save(outcomeTransaction);
+        outcomeTransactionCRUDRepository.save(outcomeTransaction);
         return outcomeTransaction;
     }
 
     public OutcomeTransaction deleteOutcomeTransaction(OutcomeTransaction outcomeTransaction) {
-        outcomeTransactionRepository.delete(outcomeTransaction);
+        outcomeTransactionCRUDRepository.delete(outcomeTransaction);
         return outcomeTransaction;
+    }
+
+    // JPA:
+    @Autowired
+    private OutcomeTransactionJPARepository outcomeTransactionJPARepository;
+
+    public double getOutcomeSum() {
+        return outcomeTransactionJPARepository.getOutcomeSum();
     }
 }
